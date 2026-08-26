@@ -9,13 +9,13 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: fast
+  storageClassName: ""
   mountOptions:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /srv/nfs/share/webroot
     server: 10.0.1.16
+    path: /srv/nfs/share/webroot
 
 ---
 apiVersion: v1
@@ -23,10 +23,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: mypvc
 spec:
-  storageClassName: fast
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
   resources:
     requests:
       storage: 5Gi
   volumeMode: Filesystem
-  accessModes:
-    - ReadWriteMany

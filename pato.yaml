@@ -16,6 +16,8 @@ spec:
       - name: pato
         image: nginx:stable
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
         volumeMounts:
         - name: pato-storage
           mountPath: /usr/share/nginx/html
@@ -23,13 +25,10 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
-        ports:
-        - containerPort: 80
       volumes:
       - name: pato-storage
         persistentVolumeClaim:
           claimName: mypvc
-
 
 ---
 apiVersion: v1
