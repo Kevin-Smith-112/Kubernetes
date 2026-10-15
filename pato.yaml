@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: pato
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: pato
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pato
-        image: nginx:stable
+        image: nginx:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
